@@ -22,8 +22,8 @@ std = []
 cfg-if = "1"
 log = "0.4.11"
 
-[target."cfg(unix)".dependencies]
-libc = "0.2.77"
+[target.'cfg(any(unix, target_os = "fuchsia", target_os = "vxworks"))'.dependencies]
+libc = { version = "0.2.77", features = ["extra_traits"] }
 
 [target.'cfg(windows)'.dependencies]
 wepoll-ffi = { version = "0.1.2", features = ["null-overlapped-wakeups-patch"] }
